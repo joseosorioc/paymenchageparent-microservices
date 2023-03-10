@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version "2.7.9"
+    id 'com.palantir.docker' version '0.34.0'
+}
+
+
+group 'co.com.osorio'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+   
+}
+
+test {
+    useJUnitPlatform()
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+               implementation 'org.springframework.boot:spring-boot-starter-web'
+               testImplementation 'org.springframework.boot:spring-boot-starter-test'
+               implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.14'
+               compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.26'
+               annotationProcessor 'org.projectlombok:lombok:1.18.26'
+               implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.7.9'
+
+    }
+
+}
+
+

@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group 'co.com.osorio'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "co.com.osorio.CustomerApplication"
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
+    archiveClassifier=''
+    enabled = false
+}
+
+
+test {
+    useJUnitPlatform()
+}
