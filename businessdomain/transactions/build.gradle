@@ -15,7 +15,7 @@ dependencies {
 
 jar {
     manifest {
-        attributes "Main-Class": "com.paymentchange.product.TransactionsApplication"
+        attributes "Main-Class": "co.com.osorio.TransactionsApplication"
     }
 
     from {
@@ -23,15 +23,11 @@ jar {
     }
     duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
     exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
+    archiveClassifier=''
+    enabled = false
 }
+
 
 test {
     useJUnitPlatform()
-}
-// remueve el ejecutable plain.jar que crea gradle
-// Build executable jar
-tasks.jar {
-    enabled = true
-    // Remove `plain` postfix from jar file name
-    archiveClassifier.set("")
 }
